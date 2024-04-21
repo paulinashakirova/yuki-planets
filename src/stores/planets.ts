@@ -2,25 +2,23 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const usePlanetApiStore = defineStore('planet-api', () => {
-  const result = ref()
+  const data = ref<any>([])
   const loading = ref(false)
-  const error = ref(null)
 
   async function fetchPlanets() {
     try {
       loading.value = true
-      error.value = null
-      const data = await fetch('https://swapi.dev/api/planets/')
-      if (!data.ok) {
-        throw new Error(`Network response was not ok: ${data.status}`)
+      const response = await fetch('https://swapi.dev/api/planets/')
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`)
       }
-      result.value = await data.json()
+      data.value = await response.json()
     } catch (error: any) {
-      error.value = error
+      console.error(error)
+      return error
     } finally {
       loading.value = false
     }
   }
-
-  return { result, fetchPlanets }
+  return { data, fetchPlanets }
 })
