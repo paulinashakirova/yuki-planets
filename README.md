@@ -31,3 +31,7 @@ pnpm test:unit
 ```sh
 pnpm lint
 ```
+
+Further ideas
+
+- Instead of having PlanetPreviewCard and SinglePlanet - I could have used slots

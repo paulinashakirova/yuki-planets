@@ -2,31 +2,26 @@
   import SinglePlanet from '@/components/SinglePlanet.vue'
   import { usePlanetApiStore } from '@/stores/planets'
   import type { Planet } from '@/types/planet'
-  import { computed, onBeforeMount, onMounted, watch } from 'vue'
+  import { computed } from 'vue'
   import { useRoute } from 'vue-router'
 
-  const store = usePlanetApiStore()
-  const planets = computed<Planet[]>(() => store.data.results)
-
-  onBeforeMount(async () => {
-    await store.fetchPlanets()
-  })
   const route = useRoute()
-  const currentPlanet = computed(() =>
-    planets.value.find(planet => planet.name === route.params.name)
-  )
+  const store = usePlanetApiStore()
+  const planets = computed<Planet[]>(() => store.data) //.results
 
-  watch(
-    () => route.params.name,
-    (newId, oldId) => {
-      console.log('water id changes', oldId, newId)
-    }
+  const currentPlanet = computed(() =>
+    planets.value?.find(planet => planet.name === route.params.name)
   )
-  onMounted(() => {
-    console.log('planets', planets)
-  })
 </script>
 <template>
-  <div>planet view component</div>
-  <SinglePlanet :planet="currentPlanet" />
+  <div class="flex flex-col justify-center items-center mt-16">
+    <div class="flex flex-col p-4 border-2 border-teal-400 rounded-md m-4">
+      <SinglePlanet :planet="currentPlanet" />
+      <button
+        @click="$router.push({ path: '/' })"
+        class="border rounded-lg py-1 px-3 m-4">
+        Return to the main page
+      </button>
+    </div>
+  </div>
 </template>
