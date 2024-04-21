@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+  import { usePlanetApiStore } from '@/stores/planets'
+  const store = usePlanetApiStore()
+  store.fetchPlanets()
 </script>
-
 <template>
   <main>
-    <TheWelcome />
+    <h1>This is home page</h1>
+    <div class="border-2 border-red-300">{{ store.result }}</div>
   </main>
 </template>
