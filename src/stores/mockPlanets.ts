@@ -1,0 +1,42 @@
+export const mockPlanets = [
+  {
+    name: 'planetname',
+    population: '200',
+    rotation_period: '345',
+    residents: ['mira', 'mara'],
+    films: ['film1', 'film2'],
+    url: 'someurl',
+  },
+  {
+    name: 'planetname22222',
+    population: '200',
+    rotation_period: '345',
+    residents: ['mira', 'mara'],
+    films: ['film1', 'film2'],
+    url: 'someurl',
+  },
+  {
+    name: 'planetname444444',
+    population: '200',
+    rotation_period: '345',
+    residents: ['mira', 'mara'],
+    films: ['film1', 'film2'],
+    url: 'someurl',
+  },
+  {
+    name: '55555555',
+    population: '200',
+    rotation_period: '345',
+    residents: ['mira', 'mara'],
+    films: ['film1', 'film2'],
+    url: 'someurl',
+  },
+  {
+    name: '556676897luigmgnb',
+    population: '200',
+    rotation_period: '345',
+    residents: ['mira', 'mara'],
+    films: ['film1', 'film2'],
+    url: 'someurl',
+  },
+]

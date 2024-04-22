@@ -1,57 +1,9 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { mockPlanets } from './mockPlanets'
 
 export const usePlanetApiStore = defineStore('planet-api', () => {
-  const data = ref<any>([
-    {
-      name: 'planetname',
-      population: '200',
-      rotation_period: '345',
-      residents: ['mira', 'mara'],
-      films: ['film1', 'film2'],
-      url: 'someurl',
-    },
-    {
-      name: 'planetname22222',
-      population: '200',
-      rotation_period: '345',
-      residents: ['mira', 'mara'],
-      films: ['film1', 'film2'],
-      url: 'someurl',
-    },
-    {
-      name: 'planetname444444',
-      population: '200',
-      rotation_period: '345',
-      residents: ['mira', 'mara'],
-      films: ['film1', 'film2'],
-      url: 'someurl',
-    },
-    {
-      name: '55555555',
-      population: '200',
-      rotation_period: '345',
-      residents: ['mira', 'mara'],
-      films: ['film1', 'film2'],
-      url: 'someurl',
-    },
-    {
-      name: '556676897luigmgnb',
-      population: '200',
-      rotation_period: '345',
-      residents: ['mira', 'mara'],
-      films: ['film1', 'film2'],
-      url: 'someurl',
-    },
-    {
-      name: '12121212',
-      population: '200',
-      rotation_period: '345',
-      residents: ['mira', 'mara'],
-      films: ['film1', 'film2'],
-      url: 'someurl',
-    },
-  ])
+  const data = ref<any>([])
   const data2 = ref<any>([])
   const loading = ref(false)
   const error = ref(null)
@@ -64,7 +16,7 @@ export const usePlanetApiStore = defineStore('planet-api', () => {
         throw new Error(`Network response was not ok: ${response.status}`)
       }
       const result = await response.json()
-      data2.value = result.results //remember about results inside components
+      data2.value = result.results
     } catch (error: any) {
       error.value = error
       console.error('Error fetching planets:', error)
@@ -72,8 +24,35 @@ export const usePlanetApiStore = defineStore('planet-api', () => {
       loading.value = false
     }
   }
-  // onMounted(async () => {
-  //   await fetchPlanets()
-  // })
-  return { data, fetchPlanets, error, loading }
+
+  onMounted(async () => {
+    // await fetchPlanets()
+    console.log('mounted in store')
+    await fakeFetchPlanets()
+    console.log('data', data.value)
+  })
+
+  async function fakeFetchPlanets() {
+    try {
+      const mockAsyncPromise = (mockList: any, delay: any) =>
+        new Promise((resolve, reject) =>
+          setTimeout(
+            () =>
+              mockList
+                ? resolve(mockList)
+                : reject(
+                    new Error(
+                      "Sadly, we couldn't load the necessary data. Please try again, or contact us. Sorry for the inconvenience."
+                    )
+                  ),
+            delay
+          )
+        )
+      data.value = await mockAsyncPromise(mockPlanets, 1000)
+    } catch (error) {
+      console.error(error)
+      return error
+    }
+  }
+  return { data, fetchPlanets, fakeFetchPlanets, error, loading }
 })
