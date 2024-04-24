@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 
-import SinglePlanet from '@/components/SinglePlanet.vue'
+import PlanetCard from '@/components/PlanetCard.vue'
 import { mount } from '@vue/test-utils'
 
-describe('SinglePlanet', () => {
+describe('PlanetCard', () => {
   it('renders properly', () => {
-    const wrapper = mount(SinglePlanet, {
+    const wrapper = mount(PlanetCard, {
       props: {
         planet: {
-          name: 'asf',
+          name: 'First Planet',
           population: 1,
           rotation_period: 2,
           residents: ['one', 'two'],
@@ -17,6 +17,6 @@ describe('SinglePlanet', () => {
         },
       },
     })
-    expect(wrapper.text()).toContain(['asf'])
+    expect(wrapper.text()).toContain(['First Planet'])
   })
 })
