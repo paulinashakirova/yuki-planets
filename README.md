@@ -23,7 +23,7 @@ pnpm build
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-pnpm test:unit
+pnpm test
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
@@ -34,4 +34,9 @@ pnpm lint
 
 Further ideas
 
-- Instead of having PlanetPreviewCard and SinglePlanet - I could have used slots
+- add darkmode
+- error page instead of component
+- pagination
+- mock and test router
+- loading state with a nice spinner while loading planets
+- load page with correct data when changing url params
