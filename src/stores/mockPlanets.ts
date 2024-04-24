@@ -1,6 +1,6 @@
 export const mockPlanets = [
   {
-    name: 'planetname',
+    name: 'planet1',
     population: '200',
     rotation_period: '345',
     residents: ['mira', 'mara'],
@@ -8,7 +8,7 @@ export const mockPlanets = [
     url: 'someurl',
   },
   {
-    name: 'planetname22222',
+    name: 'planet2',
     population: '200',
     rotation_period: '345',
     residents: ['mira', 'mara'],
@@ -16,7 +16,7 @@ export const mockPlanets = [
     url: 'someurl',
   },
   {
-    name: 'planetname444444',
+    name: 'planet3',
     population: '200',
     rotation_period: '345',
     residents: ['mira', 'mara'],
@@ -24,7 +24,7 @@ export const mockPlanets = [
     url: 'someurl',
   },
   {
-    name: '55555555',
+    name: 'planet4',
     population: '200',
     rotation_period: '345',
     residents: ['mira', 'mara'],
@@ -32,7 +32,7 @@ export const mockPlanets = [
     url: 'someurl',
   },
   {
-    name: '556676897luigmgnb',
+    name: 'planet5',
     population: '200',
     rotation_period: '345',
     residents: ['mira', 'mara'],

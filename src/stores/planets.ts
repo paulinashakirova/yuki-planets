@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import { onMounted, ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { mockPlanets } from './mockPlanets'
 
 export const usePlanetApiStore = defineStore('planet-api', () => {
-  const data = ref<any>([])
-  const data2 = ref<any>([])
-  const loading = ref(false)
-  const error = ref(null)
+  const data = ref<any>([]) // data from mocked promise
+  const data2 = ref<any>([]) // data from swapi which was unavailable
+  const loading = ref(false) // future improvement
+  const error = ref(null) // future improvement
 
   async function fetchPlanets() {
     try {
@@ -25,11 +25,9 @@ export const usePlanetApiStore = defineStore('planet-api', () => {
     }
   }
 
-  onMounted(async () => {
+  onBeforeMount(async () => {
     // await fetchPlanets()
-    console.log('mounted in store')
     await fakeFetchPlanets()
-    console.log('data', data.value)
   })
 
   async function fakeFetchPlanets() {
