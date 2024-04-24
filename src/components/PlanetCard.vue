@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { Planet } from '@/types/planet'
+
 interface Props {
-planet?: Planet
+  planet?: Planet
 }
+
 const props = withDefaults(defineProps<Props>(), {
-  planet: () => ({})
+  planet: () => ({name: 'mary'})
 })
 </script>
 
