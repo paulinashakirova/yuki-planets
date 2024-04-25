@@ -2,6 +2,8 @@
 
 This template should help get you started with the Planets project.
 
+You can find the deployed version on [Netlify](https://main--planetsyuki.netlify.app/).
+
 ## IMPORTANT
 
 In the `/stores` folder you will see 2 functions:
@@ -24,6 +26,8 @@ This should change the data origin to fetch the real planets.
 
 And the other important point!
 Unfortunately, I didn't have time to fix loading pages when manupulating url using local data.
+
+Also, as you noticed I have not integrated docker - I can read and undestand and run containers, but I haven't setup up Docker in the project by myself. I attemped it, but the learning curve is too high for now. I put it on my list to learn in the future.
 
 ## Project Setup
 
